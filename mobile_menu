@@ -66,6 +66,7 @@ $(function() {
     // 메뉴펼치기
     $('.nav-depth1').on("click", function() {
         $('.nav-depth2').css("display","none");
+        $('.nav-depth3').not($(this).find('.nav-depth3')).css("display","none");
         $(this).children().css("display","block");
     });
     $('.nav-depth2').on("click", function() {
