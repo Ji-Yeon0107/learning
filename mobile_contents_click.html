@@ -1,0 +1,65 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>mobile_contents_click</title>
+</head>
+  <style>
+    .content_m .main_m {
+      border:0px solid black;
+      width:100%;
+      position:absolute;
+      display:none;
+    }
+    .content_m .main1_m {
+      display:block;
+    }
+  </style>
+<body>
+  <div class="content_m">
+    <h1>Market O 네이쳐</h1>
+    <div class="topmenu_m">
+        <div class="topmenu-list_m">
+            <div>컨텐츠1</div>
+            <div>컨텐츠2</div>
+            <div>컨텐츠3</div>
+        </div>
+    </div>
+    <div class="main_m main1_m">
+      컨텐츠1의 내용입니다.<br>
+      컨텐츠1의 내용을 작성해 보세요.
+    </div>
+    <div class="main_m main2_m">
+      컨텐츠2의 내용입니다.<br>
+      컨텐츠2의 상세한 내용을 작성해 보세요.
+    </div>
+    <div class="main_m main3_m">
+      컨텐츠3의 내용입니다.<br>
+      컨텐츠3의 상세한 내용을 작성해 보세요.
+    </div>
+  </div>
+  <script>
+    $(function() {
+        $('.topmenu-list_m div').on("click", function() {
+          var i = $(this).index();
+          $('.main_m').hide();
+          $('.topmenu-list_m div').css({"background":"none", "color":"black"});
+          $('.main_m').eq(i).css("display","block");
+          $(this).css({"background":"coral", "color":"white"});
+      })
+      $('.nav-depth2').on("click", function() {
+          $('.nav-depth3').css("display","none");
+          if($(this).children().length !==0) {
+              $(this).children().slideDown();
+          } else {
+              $('.gnb_m').css("display","none");
+              $('.gnb-btn-close_m').css("display","none");
+          }
+      });
+      $('.nav-depth3').on("click", function() {
+          $('.gnb_m').css("display","none");
+          $('.gnb-btn-close_m').css("display","none");
+      });
+    }
+  </script>
+</body>
+</html>
