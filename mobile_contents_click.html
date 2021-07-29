@@ -13,6 +13,9 @@
     .content_m .main1_m {
       display:block;
     }
+    .content_m .topmenu_m .topmenu-list_m div:hover {
+      background:coral; color:white;
+    } 
   </style>
 <body>
   <div class="content_m">
@@ -42,7 +45,7 @@
         $('.topmenu-list_m div').on("click", function() {
           var i = $(this).index();
           $('.main_m').hide();
-          $('.topmenu-list_m div').css({"background":"none", "color":"black"});
+          $('.topmenu-list_m div').css({"background":"none", "color":"black"}); // hover적용 안 됨
           $('.main_m').eq(i).css("display","block");
           $(this).css({"background":"coral", "color":"white"});
       })
