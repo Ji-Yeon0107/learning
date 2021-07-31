@@ -1,3 +1,6 @@
+// grid: 대상이 차지하는 공간의 크기와 위치를 정의한다!
+// --> 마치 하나의 보이지 않는 상자가 생기고 그 안에 대상이 들어가 있다고 생각하면 편하다
+
 .wrapper0 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; /* 비율 */
