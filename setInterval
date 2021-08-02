@@ -1,0 +1,18 @@
+//제대로 실행 안 됨 not working properly    
+    
+    var contentLength = $(".content_m").length;
+    var currentIndex = 0;
+    var current = 0;
+    var timeID;
+    timer();
+    function timer() {
+        timeID = setInterval(function(){
+            currentIndex++;
+            if(currentIndex >= contentLength) { currentIndex=0 };
+            showImage(currentIndex);
+        })
+    };
+    function showImage(i) {
+        $(".content_m").fadeOut(100);
+        $(".content_m").eq(i).fadeIn(1000);
+    }
