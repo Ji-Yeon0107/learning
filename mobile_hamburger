@@ -1,0 +1,35 @@
+//중간에 문제가 있는걸까??
+//됐다 안됐다 한다..
+    
+    // 네비바 등장
+    $('.gnb_m').hide();
+    $('.gnb-btn-close_m').hide();
+    $('.gnb-btn-bars_m').on("click", function() {
+        $('.gnb_m').show();
+        $('.gnb-btn-close_m').show();
+        $('.gnb_m').animate({opacity:"1", right:"0"}, 500);
+        $('.gnb-btn-close_m').animate({opacity:"1"}, 500);
+        $('.nav__depth2').css("display","none");
+        $(this).hide();
+    });
+    $('.gnb-btn-close_m').on("click", function() {
+        $('.gnb_m').animate({opacity:"0", right:"-50%"}, 500);
+        $('.gnb_m').hide();
+        $(this).animate({opacity:"0"}, 200);
+        $('.gnb-btn-bars_m').show();
+    }); 
+    // 메뉴펼치기
+    $('.nav__depth1').on("click", function() {
+
+        $('.nav__depth1').css("color","white");
+        $('.nav__depth2').not($(this).children()).hide();
+        $(this).children('.nav__depth2').slideToggle(function() {
+            $(this).parents('.nav__depth1').css("color","coral");
+            $(this).css("color","white");
+        });
+    })        
+    $('.nav__depth2').on("click", function() {
+        $('.gnb_m').hide();
+        $('.gnb-btn-close_m').hide();
+        $('.gnb-btn-bars_m').show();
+    }) 
