@@ -1,0 +1,4 @@
+var i
+    for(i=0; i<3; i++){
+      $(.row).appendTo(<Card shoes={shoes[i]}></Card>)
+     
