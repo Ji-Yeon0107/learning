@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="chart.min.js" defer></script>
+    <script src="chartjs-plugin-datalabels.min.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <canvas id="myChart" width="250" height="250"></canvas>
+    </div>
+    <div>
+      <canvas id="myChart2" width="250" height="250"></canvas>
+    </div>
+    <script>
+      window.onload = function () {
+        const ctx = document.getElementById("myChart").getContext("2d");
+        const ctx2 = document.getElementById("myChart2").getContext("2d");
+        const dataArray = [5, 20];
+        let sum = 0;
+        for (let i = 0; i < dataArray.length; i++) {
+          sum += dataArray[i];
+        }
+
+        const data = {
+          labels: ["실거래", "전례"],
+          datasets: [
+            {
+              datalabels: {
+                offset: 0,
+                anchor: "end",
+                align: "end",
+                color: "#aaa",
+                font: {
+                  size: 16,
+                },
+                formatter: function (value, context) {
+                  return `${value}건,
+${Math.round((value / sum) * 100)}%`;
+                },
+              },
+              data: dataArray,
+              backgroundColor: [
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(255, 159, 64, 0.2)",
+              ],
+            },
+          ],
+        };
+        const myChart = new Chart(ctx, {
+          type: "doughnut",
+          plugins: [ChartDataLabels],
+          data: data,
+          options: {
+            responsive: false,
+            datasets: {
+              doughnut: {
+                hoverBorderColor: "#fff",
+              },
+            },
+            plugins: {
+              title: {
+                display: true,
+                text: "실거래 및 전례 건수 비율",
+                font: { size: 24 },
+                padding: { bottom: 40 },
+              },
+              legend: {
+                maxHeight: 80,
+                position: "bottom",
+                labels: {
+                  padding: 40,
+                  boxWidth: 10,
+                  boxHeight: 10,
+                  font: {
+                    size: 16,
+                  },
+                },
+                onClick: () => {
+                  return;
+                },
+              },
+            },
+          },
+        });
+
+        const mixedChart = new Chart(ctx2, {
+          type: "line",
+          data: {
+            datasets: [
+              {
+                label: "line Dataset",
+                data: [390, 340, 340, 380, 410, 300],
+                // this dataset is drawn below
+                order: 2,
+              },
+              {
+                label: "scatter Dataset",
+                data: [420, 403, 390, 410, 430, 440],
+                type: "scatter",
+                // this dataset is drawn on top
+                order: 1,
+              },
+            ],
+            labels: ["201850", "201950", "202050", "202150", "", ""],
+          },
+          options: {
+            responsive: false,
+            plugins: {
+              subtitle: {
+                display: true,
+                text: `y = 0 x - 74,018, R2= 0`,
+              },
+              legend: {
+                display: false,
+              },
+              title: {
+                display: true,
+                font: { size: 24 },
+                text: "단가 거래 출력",
+              },
+
+              scales: {
+                display: false,
+
+                xAxis: {},
+              },
+            },
+          },
+        });
+      };
+    </script>
+  </body>
+</html>
