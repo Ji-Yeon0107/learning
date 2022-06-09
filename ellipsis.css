@@ -1,0 +1,17 @@
+/* multiple lines of ellipsis */
+
+div {        
+  overflow: 'hidden',
+  '-webkit-line-clamp': '2',
+  '-webkit-box-orient': 'vertical',
+  display: '-webkit-box',
+}
+
+/* one line of ellipsis */
+
+div {        
+        textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          wordWrap: 'break-word',
+}
